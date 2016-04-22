@@ -12,8 +12,11 @@
     tools:context="tech.yzaguirre.avisos.AvisosActivity"
     tools:showIn="@layout/activity_avisos">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/listView_avisos"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="215dp" />
 </RelativeLayout>
