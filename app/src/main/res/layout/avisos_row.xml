@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:orientation="vertical"
+    android:backgroundTint="@color/azul_claro">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="48dp"></LinearLayout>
+        android:layout_height="48dp">
+        
+        <view
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            class="android.view.View"
+            android:id="@+id/row_tab"
+            android:backgroundTint="@color/rosa" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Aviso Text"
+            android:id="@+id/textView_round"
+            android:textSize="18sp"
+            android:backgroundTint="@color/azul_oscuro" />
+    </LinearLayout>
 </LinearLayout>
