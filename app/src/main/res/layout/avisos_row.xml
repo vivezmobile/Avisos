@@ -22,7 +22,7 @@
             android:layout_height="50dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Aviso Text"
-            android:id="@+id/textView_round"
+            android:id="@+id/textView_rowText"
             android:textSize="18sp"
             android:gravity="center_vertical"
             android:padding="10dp"

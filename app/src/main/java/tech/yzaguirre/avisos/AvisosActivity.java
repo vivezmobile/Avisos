@@ -8,24 +8,32 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class AvisosActivity extends AppCompatActivity {
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avisos);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        listView = (ListView) findViewById(R.id.listView_avisos);
+        // The arrayadapter is the controller in our
+        // mvc relationaship.
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                // context
+                this,
+                // layout (view)
+                R.layout.avisos_row,
+                // row (view)
+                R.id.textView_rowText,
+                // data (model) with bogus data to test our listview
+                new String[]{"First record", "Second record", "Third record"}
+        );
+        listView.setAdapter(arrayAdapter);
     }
 
     @Override
