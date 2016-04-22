@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tech.yzaguirre.avisos.AvisosActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_nuevo"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_nuevo"
+        app:showAsAction="never" />
+<item
+        android:id="@+id/action_salir"
+        android:orderInCategory="200"
+        android:title="@string/action_salir"
         app:showAsAction="never" />
 </menu>
