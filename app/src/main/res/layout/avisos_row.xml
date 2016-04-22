@@ -19,11 +19,20 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Aviso Text"
             android:id="@+id/textView_round"
             android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:backgroundTint="@color/azul_oscuro" />
     </LinearLayout>
+    <view
+        class="android.view.View"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:backgroundTint="#333"/>
 </LinearLayout>
