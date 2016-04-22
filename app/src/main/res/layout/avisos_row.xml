@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="vertical"
-    android:backgroundTint="@color/azul_claro">
+    android:background="@color/azul_claro">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             class="android.view.View"
             android:id="@+id/row_tab"
-            android:backgroundTint="@color/rosa" />
+            android:background="@color/rosa" />
 
         <TextView
             android:layout_width="match_parent"
@@ -28,11 +28,11 @@
             android:padding="10dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:backgroundTint="@color/azul_oscuro" />
+            android:background="@color/azul_oscuro" />
     </LinearLayout>
     <view
         class="android.view.View"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:backgroundTint="#333"/>
+        android:background="#333"/>
 </LinearLayout>
