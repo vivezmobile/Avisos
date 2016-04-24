@@ -96,7 +96,7 @@ public class AvisosDBAdapter {
     }
     // Delete
     public void deleteReminderById(int id){
-        db.delete(TABLE_NAME, COL_ID + "=?", new String[]{id});
+        db.delete(TABLE_NAME, COL_ID + "=?", new String[]{String.valueOf(id)});
     }
     public void deleteAllReminders(){
         db.delete(TABLE_NAME, null, null);
