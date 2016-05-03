@@ -1,5 +1,6 @@
 package tech.yzaguirre.avisos;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,25 +17,54 @@ import java.util.List;
 
 public class AvisosActivity extends AppCompatActivity {
     private ListView listView;
+    private AvisosDBAdapter avisosDBAdapter;
+    private AvisosSimpleCursorAdapter avisosSimpleCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avisos);
         listView = (ListView) findViewById(R.id.listView_avisos);
-        // The arrayadapter is the controller in our
-        // mvc relationaship.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        listView.setDivider(null);
+        avisosDBAdapter = new AvisosDBAdapter(this);
+        avisosDBAdapter.open();
+
+        if (savedInstanceState == null){
+            // limpiar todos los datos
+            avisosDBAdapter.deleteAllReminders();
+            // add algunos datos
+            avisosDBAdapter.createReminder("visital el centro", true);
+            avisosDBAdapter.createReminder("Enviar regalos", false);
+            avisosDBAdapter.createReminder("Comprobar correo", true);
+        }
+
+        Cursor cursor = avisosDBAdapter.fetchAllReminders();
+
+        // desde las columnas definidas en la base de datos
+        String[] from = new String[]{
+                AvisosDBAdapter.COL_CONTENT
+        };
+
+        // a la id de views en el layout
+        int[] to = new int[]{
+                R.id.textView_rowText
+        };
+
+        avisosSimpleCursorAdapter = new AvisosSimpleCursorAdapter(
                 // context
-                this,
-                // layout (view)
+                AvisosActivity.this,
+                // el layout de la fila
                 R.layout.avisos_row,
-                // row (view)
-                R.id.textView_rowText,
-                // data (model) with bogus data to test our listview
-                new String[]{"First record", "Second record", "Third record"}
+                // cursor
+                cursor,
+                // desde las columnas definidas en la base de datos
+                from,
+                // a las ids de views en el layout
+                to,
+                // flag - no usado
+                0
         );
-        listView.setAdapter(arrayAdapter);
+        listView.setAdapter(avisosSimpleCursorAdapter);
     }
 
     @Override
