@@ -1,9 +1,11 @@
 package tech.yzaguirre.avisos;
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class AvisosActivity extends AppCompatActivity {
@@ -71,8 +74,32 @@ public class AvisosActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AvisosActivity.this, "pulsado " + position, Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AvisosActivity.this);
+                ListView modeListView = new ListView(AvisosActivity.this);
+                String[] modes = new String[]{"Editar Aviso", "Borrar Aviso"};
+                ArrayAdapter<String> modeAdapter = new ArrayAdapter<>(AvisosActivity.this, android.R.layout.simple_list_item_1, android.R. id.text1, modes);
+                modeListView.setAdapter(modeAdapter);
+                builder.setView(modeListView);
+                final Dialog dialog = builder.create();
+                dialog.show();
+                modeListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                        // editar aviso
+                        if (position == 0) {
+                            Toast.makeText(AvisosActivity.this, "editar "
+                                    + masterListPosition, Toast.LENGTH_SHORT).show();
+                            // borrar aviso
+                        } else {
+                            Toast.makeText(AvisosActivity.this, "borrar "
+                                    + masterListPosition, Toast.LENGTH_SHORT).show();
+                        }
+                        dialog.dismiss();
+
+                    }
+                });
             }
         });
     }
